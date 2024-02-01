@@ -1,2 +1,2 @@
 # Conecta_EAFIT
-Repository where the will upload the proyect improvement
+Repository where the team will upload the proyect improvements
