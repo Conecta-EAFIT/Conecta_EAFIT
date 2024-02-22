@@ -1,2 +1,21 @@
-<h1>Welcome to the teacher Home Page, {{name}}</h1>
-<h2>This is the full home page</h2>
+<div class="container">
+    <form action="">
+        <div class="mb-3">
+            <label for="searchProfesor" class="form-label">
+                Search for searchProfesor:
+            </label>
+            <input type="text" class="form-control" name="searchProfesor" />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <p>Searching for {{searchTerm}}</p>
+    {% for profesor in movies %}
+        <h2>{{ profesor.title }}</h2>
+        <h3>{{ profesor.description }}</h3>
+        <img src="{{ profesor.image_url }}">
+        {% if profesor.url %}
+            <a href="{{ profesor.url }}">Movie Link</a>
+        {% endif %}
+    {% endfor %}
+<br/>
+</div>
