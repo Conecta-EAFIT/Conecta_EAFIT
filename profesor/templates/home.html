@@ -2,20 +2,20 @@
     <form action="">
         <div class="mb-3">
             <label for="searchProfesor" class="form-label">
-                Search for searchProfesor:
+                Search for Profesor:
             </label>
             <input type="text" class="form-control" name="searchProfesor" />
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
     <p>Searching for {{searchTerm}}</p>
-    {% for profesor in movies %}
-        <h2>{{ profesor.title }}</h2>
-        <h3>{{ profesor.description }}</h3>
-        <img src="{{ profesor.image_url }}">
-        {% if profesor.url %}
-            <a href="{{ profesor.url }}">Movie Link</a>
-        {% endif %}
-    {% endfor %}
-<br/>
+        {% for profesor in profesores %}
+            <h2>{{ profesor.title }}</h2>
+            <h3>{{ profesor.description }}</h3>
+            <img src="{{ profesor.image_url }}">
+            {% if profesor.url %}
+                <a href="{{ profesor.url }}">Profesor Link</a>
+            {% endif %}
+        {% endfor %}
+    <br/>
 </div>

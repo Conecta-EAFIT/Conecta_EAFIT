@@ -7,11 +7,11 @@ from .models import Profesor
 def home(request):
     searchTerm = request.GET.get('searchProfesor')
     if searchTerm:
-        profesor = Profesor.objects.filter(title__icontains=searchTerm)
+        profesores = Profesor.objects.filter(title__icontains=searchTerm)
     else:
-        profesor = Profesor.objects.all()
-    return render(request, 'home.html', {'searchTerm':searchTerm, 'profesor': profesor})
+        profesores = Profesor.objects.all()
+    return render(request, 'home.html', {'searchTerm':searchTerm, 'profesores': profesores})
 
 
 def about(request):
-    return render(request, 'about.html')
+    return HttpResponse('<h1> Welcome to About Page </h1>')
