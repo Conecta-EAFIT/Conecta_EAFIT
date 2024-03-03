@@ -2,8 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
+from .models import Profesor
+
 def home(request):
-    return render(request, 'home.html', {'name':'Jose Duque'})
+    searchTerm = request.GET.get('searchProfesor')
+    if searchTerm:
+        profesores = Profesor.objects.filter(title__icontains=searchTerm)
+    else:
+        profesores = Profesor.objects.all()
+    return render(request, 'home.html', {'searchTerm':searchTerm, 'profesores': profesores})
+
 
 def about(request):
-    return render(request, 'about.html')
+    return HttpResponse('<h1> Welcome to About Page </h1>')
