@@ -18,7 +18,15 @@
         <img src="{{ profesor.image.url }}" class="card-img-top" alt="Profesor Image">
         <div class="card-body">
             <h5 class="card-title">{{ profesor.title }}</h5>
+            <p class="card-text"><strong>Genre:</strong> {{ profesor.genre }}</p>
+            <p class="card-text"><strong>Year:</strong> {{ profesor.year }}</p>
+            <p class="card-text"><strong>Rating:</strong> {{ profesor.rating }}</p>
             <p class="card-text">{{ profesor.description }}</p>
+            {% if profesor.url %}
+            <a href="{{ profesor.url }}" class="btn btn-primary">Profesor Link</a>
+            {% endif %}
+        </div>
+        
             {% if profesor.url %}
             <a href="{{ profesor.url }}" class="btn btn-primary">Profesor Link</a>
             {% endif %}
