@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,33 +54,34 @@ footer {
 
     </style>
 </head>
-<body>
-    <header>
-        <img src="https://www.bureaumedellin.com/wp-content/uploads/2020/11/eafit_4487008897.png" alt="Logo EAFIT">
-        <h1>¡Conecta con tus profesores!</h1>
-    </header>
-    <main>
-        <section id="about">
-            <h2>Sobre Nosotros</h2>
-            <p>El propósito de Conecta EAFIT es que los alumnos conozcan toda la información de todos los profesores de la Universidad EAFIT.</p>
-            <p>Somos un equipo de cuatro estudiantes de Ingeniería de Sistemas, en nuestro quinto semestre en EAFIT:</p>
-            <ul>
-                <li>Jose Alejandro Duque (Product Owner)</li>
-                <li>Pedro Saldarriaga (Developer)</li>
-                <li>Miguel Angel Diaz (Scrum Master)</li>
-                <li>Jose Miguel Burgos (Developer)</li>
-            </ul>
-            <p>Síguenos en Instagram para más actualizaciones:</p>
-            <ul>
-                <li><a href="https://www.instagram.com/joseduquep">@joseduquep</a></li>
-                <li><a href="https://www.instagram.com/pedrosaldarriaga_">@pedrosaldarriaga_</a></li>
-                <li><a href="https://www.instagram.com/mdiaz__v">@mdiaz__v</a></li>
-                <li><a href="https://www.instagram.com/jburgos_1104">@jburgos_1104</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Conecta EAFIT. Todos los derechos reservados.</p>
-    </footer>
-</body>
-</html>
+
+{% extends "base.html" %}
+{% block content %}
+<header>
+    <img src="https://www.bureaumedellin.com/wp-content/uploads/2020/11/eafit_4487008897.png" alt="Logo EAFIT">
+    <h1>¡Conecta con tus profesores!</h1>
+</header>
+<main>
+    <section id="about">
+        <h2>Sobre Nosotros</h2>
+        <p>El propósito de Conecta EAFIT es que los alumnos conozcan toda la información de todos los profesores de la Universidad EAFIT.</p>
+        <p>Somos un equipo de cuatro estudiantes de Ingeniería de Sistemas, en nuestro quinto semestre en EAFIT:</p>
+        <ul>
+            <li>Jose Alejandro Duque (Product Owner)</li>
+            <li>Pedro Saldarriaga (Developer)</li>
+            <li>Miguel Angel Diaz (Scrum Master)</li>
+            <li>Jose Miguel Burgos (Developer)</li>
+        </ul>
+        <p>Síguenos en Instagram para más actualizaciones:</p>
+        <ul>
+            <li><a href="https://www.instagram.com/joseduquep">@joseduquep</a></li>
+            <li><a href="https://www.instagram.com/pedrosaldarriaga_">@pedrosaldarriaga_</a></li>
+            <li><a href="https://www.instagram.com/mdiaz__v">@mdiaz__v</a></li>
+            <li><a href="https://www.instagram.com/jburgos_1104">@jburgos_1104</a></li>
+        </ul>
+    </section>
+</main>
+<footer>
+    <p>© 2024 Conecta EAFIT. Todos los derechos reservados.</p>
+</footer>
+{% endblock content %}

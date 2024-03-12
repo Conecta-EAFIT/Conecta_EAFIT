@@ -61,7 +61,7 @@ ROOT_URLCONF = 'conecta_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'profesor/templates')],
+        'DIRS': [os.path.join(BASE_DIR,'conecta_django/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
