@@ -11,7 +11,7 @@
 <div class="container">
     <form action="">
         <div class="mb-3">
-            <label for="searchProfesor" class="form-label">Search for Profesor:</label>
+            <label for="searchProfesor" class="form-label">Busca Por el Nombre del Profesor:</label>
             <input type="text" class="form-control" name="searchProfesor" id="searchProfesor" />
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
@@ -29,7 +29,7 @@
                     <p class="card-text"><strong>Rating:</strong> {{ profesor.rating }}</p>
                     <p class="card-text">{{ profesor.description }}</p>
                     {% if profesor.url %}
-                    <a href="{{ profesor.url }}" class="btn btn-primary">Profesor Link</a>
+                    <a href="{{ profesor.url }}" class="btn btn-primary">Link del profesor</a>
                     {% endif %}
                 </div>
             </div>
