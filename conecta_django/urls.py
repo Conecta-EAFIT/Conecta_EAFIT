@@ -29,9 +29,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ingresoViews.home1, name='home1'),
-    #path('home1', ingresoViews.home1, name='home1'),
+    path('home1', ingresoViews.home1, name='home1'),
     path('login/', ingresoViews.login, name='login'),
-    path('signup', ingresoViews.signup, name='signup'),
+    path('signup/', ingresoViews.signup, name='signup'),
     path('about/', profesorViews.about, name='about'),
     path('home/', profesorViews.home, name='home'),
     path('noticias/', include('noticias.urls')),
