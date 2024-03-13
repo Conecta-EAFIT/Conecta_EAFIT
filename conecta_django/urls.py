@@ -32,6 +32,7 @@ urlpatterns = [
     path('home1', ingresoViews.home1, name='home1'),
     path('login/', ingresoViews.login, name='login'),
     path('signup/', ingresoViews.signup, name='signup'),
+    path('signout/', ingresoViews.signout, name='signout'),
     path('about/', profesorViews.about, name='about'),
     path('home/', profesorViews.home, name='home'),
     path('noticias/', include('noticias.urls')),

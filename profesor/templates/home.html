@@ -22,13 +22,11 @@
                 <img src="{{ profesor.image.url }}" class="card-img-top" alt="Profesor Image">
                 <div class="card-body">
                     <h5 class="card-title">{{ profesor.title }}</h5>
-                    <p class="card-text"><strong>Genre:</strong> {{ profesor.genre }}</p>
-                    <p class="card-text"><strong>Year:</strong> {{ profesor.year }}</p>
-                    <p class="card-text"><strong>Rating:</strong> {{ profesor.rating }}</p>
-                    <p class="card-text">{{ profesor.description }}</p>
-                    {% if profesor.url %}
-                    <a href="{{ profesor.url }}" class="btn btn-primary">Link del profesor</a>
-                    {% endif %}
+                    <p class="card-text"><strong>Carrera:</strong> {{ profesor.genre }}</p>
+                    <p class="card-text"><strong>Año de nacimiento:</strong> {{ profesor.year }}</p>
+                    <p class="card-text"><strong>Calificación:</strong> {{ profesor.rating }}</p>
+                    <p class="card-text"><strong>Descripción:</strong>{{ profesor.description }}</p>
+                    <a href="{{ profesor.url }}" class="btn btn-primary">Conoce más</a>
                 </div>
             </div>
         </div>

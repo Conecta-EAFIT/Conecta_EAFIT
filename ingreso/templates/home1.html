@@ -75,7 +75,11 @@
 </head>
 <body>
 
-
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
     <div class="logo-container">
         <div class="logo">
             <h1>Conecta Eafit</h1>
