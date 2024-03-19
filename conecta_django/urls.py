@@ -33,10 +33,10 @@ urlpatterns = [
     path('login/', ingresoViews.login, name='login'),
     path('signup/', ingresoViews.signup, name='signup'),
     path('signout/', ingresoViews.signout, name='signout'),
-    path('about/', profesorViews.about, name='about'),
-    path('home/', profesorViews.home, name='home'),
-    path('noticias/', include('noticias.urls')),
-    
+    path('about/', profesorViews._about, name='about'),
+    path('profesores/', profesorViews._profesores, name='profesores'),
+    path('Conecta/', profesorViews._conectaHome, name='conectaHome'),
+    path('noticias/', include('noticias.urls')),   
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

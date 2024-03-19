@@ -4,14 +4,17 @@ from django.http import HttpResponse
 
 from .models import Profesor
 
-def home(request):
+def _profesores(request):
     searchTerm = request.GET.get('searchProfesor')
     if searchTerm:
         profesores = Profesor.objects.filter(title__icontains=searchTerm)
     else:
         profesores = Profesor.objects.all()
-    return render(request, 'home.html', {'searchTerm':searchTerm, 'profesores': profesores})
+    return render(request, 'profesores.html', {'searchTerm':searchTerm, 'profesores': profesores})
+
+def _conectaHome(request):
+    return render (request, 'conectaHome.html')
 
 
-def about(request):
+def _about(request):
     return render(request, 'about.html')

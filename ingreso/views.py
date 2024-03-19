@@ -36,7 +36,7 @@ def login(request):
 
         if user is not None:
             username = user.username
-            return redirect('home')
+            return redirect('conectaHome')
         else:
             #messages.error(request, "Los datos ingresados son inválidos")
             return redirect('home1')
