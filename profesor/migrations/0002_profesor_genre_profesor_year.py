@@ -15,9 +15,4 @@ class Migration(migrations.Migration):
             name='genre',
             field=models.CharField(blank=True, max_length=250),
         ),
-        migrations.AddField(
-            model_name='profesor',
-            name='year',
-            field=models.IntegerField(blank=True, null=True),
-        ),
     ]
