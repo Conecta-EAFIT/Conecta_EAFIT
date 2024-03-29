@@ -2,7 +2,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search for Profesor</title>
+    <style>
+        .descripcion-truncada {
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Número de líneas a mostrar antes de truncar */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre-wrap; /* Cambiar a 'normal' si no quieres preservar los espacios en blanco y saltos de línea */
+        }
+    </style>
 </head>
+
 
 {% extends "base.html" %}
 {% block content %}    
@@ -17,10 +28,10 @@
     <p>Buscando por: {{ searchTerm }}</p>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for profesor in profesores %}
-        <div class="col">
-            <div class="card" style="width: 18rem;">
+        <div class="col d-flex align-items-stretch"> <!-- Modificación aquí -->
+            <div class="card" style="width: 100%;"> <!-- Modificación aquí -->
                 <img src="{{ profesor.image.url }}" class="card-img-top" alt="Imagen del Profesor">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column"> <!-- Modificación aquí -->
                     <h5 class="card-title">{{ profesor.title }}</h5>
                     <p class="card-text"><strong>Carrera(s):</strong> 
                         {% for carrera in profesor.carreers.all %}
@@ -29,8 +40,8 @@
                     </p>
                     <p class="card-text"><strong>Año de nacimiento:</strong> {{ profesor.year }}</p>
                     <p class="card-text"><strong>Calificación:</strong> {{ profesor.rating }}</p>
-                    <p class="card-text"><strong>Descripción:</strong> {{ profesor.description }}</p>
-                    <a href="{{ profesor.url }}" class="btn btn-primary">Conoce más</a>
+                    <p class="card-text descripcion-truncada"><strong>Descripción:</strong> {{ profesor.description }}</p>
+                    <a href="{{ profesor.url }}" class="btn btn-primary mt-auto">Conoce más</a> <!-- Modificación aquí -->
                 </div>
             </div>
         </div>
