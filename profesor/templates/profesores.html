@@ -4,7 +4,7 @@
     <title>Search for Profesor</title>
 </head>
 
-{% extends "base.html" %}
+{{% extends "base.html" %}
 {% block content %}    
 <div class="container">
     <form action="">
@@ -12,20 +12,24 @@
             <label for="searchProfesor" class="form-label">Busca Por el Nombre del Profesor:</label>
             <input type="text" class="form-control" name="searchProfesor" id="searchProfesor" />
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
-    <p>Searching for {{ searchTerm }}</p>
+    <p>Buscando por: {{ searchTerm }}</p>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for profesor in profesores %}
         <div class="col">
             <div class="card" style="width: 18rem;">
-                <img src="{{ profesor.image.url }}" class="card-img-top" alt="Profesor Image">
+                <img src="{{ profesor.image.url }}" class="card-img-top" alt="Imagen del Profesor">
                 <div class="card-body">
                     <h5 class="card-title">{{ profesor.title }}</h5>
-                    <p class="card-text"><strong>Carrera:</strong> {{ profesor.carreers }}</p>
+                    <p class="card-text"><strong>Carrera(s):</strong> 
+                        {% for carrera in profesor.carreers.all %}
+                            {{ carrera.name_carreer }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
                     <p class="card-text"><strong>Año de nacimiento:</strong> {{ profesor.year }}</p>
                     <p class="card-text"><strong>Calificación:</strong> {{ profesor.rating }}</p>
-                    <p class="card-text"><strong>Descripción:</strong>{{ profesor.description }}</p>
+                    <p class="card-text"><strong>Descripción:</strong> {{ profesor.description }}</p>
                     <a href="{{ profesor.url }}" class="btn btn-primary">Conoce más</a>
                 </div>
             </div>
