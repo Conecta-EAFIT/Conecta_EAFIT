@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from profesor import views as profesorViews
 from ingreso import views as ingresoViews
+from noticias import views as noticiasViews
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -36,7 +37,7 @@ urlpatterns = [
     path('about/', profesorViews._about, name='about'),
     path('profesores/', profesorViews._profesores, name='profesores'),
     path('Conecta/', profesorViews._conectaHome, name='conectaHome'),
-    path('noticias/', include('noticias.urls')),   
+    path('noticias/', noticiasViews.noticias, name='noticias' ),   
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
