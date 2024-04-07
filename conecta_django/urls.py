@@ -35,9 +35,14 @@ urlpatterns = [
     path('signup/', ingresoViews.signup, name='signup'),
     path('signout/', ingresoViews.signout, name='signout'),
     path('about/', profesorViews._about, name='about'),
+    path('record/<int:pk>', profesorViews.customer_record, name='record'),
     path('profesores/', profesorViews._profesores, name='profesores'),
-    path('Conecta/', profesorViews._conectaHome, name='conectaHome'),
-    path('noticias/', noticiasViews.noticias, name='noticias' ),   
+    path('Conecta/', profesorViews.conectaHome, name='conectaHome'),
+    path('noticias/', noticiasViews.noticias, name='noticias' ),     
+    path('add_record/', profesorViews.add_record, name='add_record' ),
+    path('delete_record/<int:pk>', profesorViews.delete_record, name='delete_record'),
+    path('profesor_por_carrera/<str:carrera_id>/', profesorViews.profesor_por_carrera, name='profesor_por_carrera'),
+    path('update_record/<int:pk>', profesorViews.update_record, name='update_record')   
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
