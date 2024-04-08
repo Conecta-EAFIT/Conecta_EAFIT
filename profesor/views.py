@@ -23,13 +23,13 @@ def _about(request):
 
 def profesor_por_carrera(request, carrera_id):
     carrera = Carrera.objects.get(nombre=carrera_id)
-    Profesors = Carrera.objects.filter(Carrera=carrera)
-    return render(request, 'home.html', {'carrera': carrera, 'Profesor': _profesores})
+    Profesor = Carrera.objects.filter(Carrera=carrera)
+    return render(request, 'home.html', {'carrera': carrera, 'Profesor': Profesor})
 
 def customer_record(request, pk):
 	if request.user.is_authenticated:
-		Profesors = Profesor.objects.get(id=pk)
-		return render(request, 'record.html', {'Profesor':_profesores})
+		Profesores = Profesor.objects.get(id=pk)
+		return render(request, 'record.html', {'Profesor': Profesores})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('conectaHome')
@@ -60,23 +60,18 @@ def add_record(request):
         return render(request, 'add_record.html', {'form': form})
     else:
         messages.success(request, "You Must Be Logged In...")
-        return redirect('Conectahome')
+        return redirect('conectaHome')
 
 
 
 def update_record(request, pk):
-    if request.user.is_authenticated:
-        current_record = Profesor.objects.get(id=pk)
-        if request.method == "POST":
-            form = AddRecordForm(request.POST, request.FILES, instance=current_record)
-            if form.is_valid():
-                form.save() 
-                messages.success(request, "Record Has Been Updated!")
-                return redirect('Conectahome')
-        else:
-            form = AddRecordForm(instance=current_record)
-        return render(request, 'update_record.html', {'form': form})
+    current_record = Profesor.objects.get(id=pk)
+    if request.method == 'POST':
+        form = AddRecordForm(request.POST, request.FILES, instance=current_record)
+        if form.is_valid():
+            form.save() 
+            messages.success(request, "Record Has Been Updated!")
+            return redirect('conectaHome')
     else:
-        messages.success(request, "You Must Be Logged In...")
-        return redirect('Conectahome')
-
+        form = AddRecordForm(instance=current_record)
+    return render(request, 'update_record.html', {'form': form})
