@@ -1,6 +1,71 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<head>
+    <!-- Agrega tus enlaces a Bootstrap y otros archivos de estilo aquí -->
+    <style>
+        form {
+            margin: auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        input[type="text"] {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="number"] {
+            display: block;
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: blue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: lightblue;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fff;
+            font-size: 16px;
+            color: #333;
+          }
+
+          select option {
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+          }
+
+    </style>
+</head>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -13,7 +78,7 @@
                         {% csrf_token %}
                         {{ form.as_p }}
                         <br>
-                        <button type="submit" class="btn btn-secondary btn-block">Actualizar Registro</button>
+                        <button type="submit" class="button">Actualizar Registro</button>
                     </form>
                 </div>
             </div>

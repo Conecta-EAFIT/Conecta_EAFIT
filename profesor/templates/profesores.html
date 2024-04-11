@@ -21,13 +21,23 @@
         }
 
         .btn-conocer {
-            width: 100%;
-            text-decorate: none;
-            font-family: Arial; 
-            border: solid green 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: blue;
+            text-decoration: none;
+            font-family: Arial Black; 
+            font-size: 1.5em;
             color: #000000;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+            border-radius: 20px;
         }
         
+        .btn-conocer:hover {
+            background-color: lightblue;
+        }
+
     </style>
 </head>
 <body>
@@ -42,10 +52,10 @@
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
         <p>Buscando por: {{ searchTerm }}</p>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-2">
             {% for profesor in profesores %}
             <div class="col d-flex align-items-stretch">
-                <div class="card" style="width: 100%; background-color: #1B46F3;">
+                <div class="card" style="width: 100%; background-color: #2A82F8;">
                     <img src="{{ profesor.image.url }}" class="card-img-top img-custom" alt="Imagen del Profesor">
                     
                     <div class="card-body">
