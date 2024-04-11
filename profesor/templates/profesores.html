@@ -14,6 +14,20 @@
             text-overflow: ellipsis;
             white-space: pre-wrap; /* Cambiar a 'normal' si no quieres preservar los espacios en blanco y saltos de línea */
         }
+
+        .img-custom {
+            width: 20em;
+            height: 20em;
+        }
+
+        .btn-conocer {
+            width: 100%;
+            text-decorate: none;
+            font-family: Arial; 
+            border: solid green 2px;
+            color: #000000;
+        }
+        
     </style>
 </head>
 <body>
@@ -31,8 +45,8 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for profesor in profesores %}
             <div class="col d-flex align-items-stretch">
-                <div class="card" style="width: 100%;">
-                    <img src="{{ profesor.image.url }}" class="card-img-top" alt="Imagen del Profesor">
+                <div class="card" style="width: 100%; background-color: #1B46F3;">
+                    <img src="{{ profesor.image.url }}" class="card-img-top img-custom" alt="Imagen del Profesor">
                     
                     <div class="card-body">
                         <p class="card-text"><strong>Nombre:</strong> {{ profesor.title }}</p>
@@ -47,7 +61,7 @@
                     
                     <!-- Redirección a la página "record" -->
                     <div class="card-footer">
-                        <a href="{% url 'update_record' pk=profesor.pk %}" class="btn btn-primary">Conoce más</a>
+                        <a href="{% url 'update_record' pk=profesor.pk %}" class="btn-conocer">Conoce más</a>
                     </div>
                 </div>
             </div>
