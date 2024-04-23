@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Pantalla de Inicio</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url("../../media/interfaz/images/Inicio.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #1845ad;
+        font-family: 'Poppins', sans-serif;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        height: 100vh;
+      }
+
+      .logo-container {
+        grid-row: 2 / span 2;
+        grid-column: 1 / span 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background-color: rgba();
+        position: absolute;
+        padding: 3em;
+        width: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .logo {
+        max-width: 100%;
+        font-size: 26px;
+      }
+
+      .buttons-container {
+        margin-left: 70px;
+        grid-row: 2 / span 2;
+        grid-column: 3 / span 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Evita que se vea la parte "salida" */
+      }
+
+      /* Actualización: Estilo de enlace como botón */
+      .buttons-container a {
+        margin-bottom: 15px;
+        width: calc(100% - 30px); /* Ajustar según el padding para centrar correctamente */
+        padding: 15px; /* Ajustar el padding para el tamaño vertical deseado */
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 5px;
+        display: flex; /* Nuevo: Para centrar el texto verticalmente */
+        align-items: center; /* Nuevo: Para centrar el texto verticalmente */
+        justify-content: center; /* Centrado horizontal */
+        background-color: #1845ad;
+        color: #ffffff;
+        text-decoration: none;
+        height: 60px; /* Altura fija para ambos botones */
+        overflow: hidden; /* Evita que se vea la parte "salida" */
+      }
+
+      .messages {
+        color: #000;
+        position: relative;
+        z-index: 2;
+      }
+
+    </style>
+</head>
+<body>
+
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    <div class="logo-container">
+        <div class="logo">
+            <h1>Conecta Eafit</h1>
+        </div>
+    </div>
+    <div class="buttons-container">
+        <!-- Actualizado: Usar solo <a> con clases de botón -->
+        <a href="login/" class="button">Iniciar Sesión</a>
+        <a href="signup/" class="button">Registrarse</a>
+    </div>
+</body>
+</html>
