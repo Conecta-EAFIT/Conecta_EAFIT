@@ -87,9 +87,11 @@
                     
                     <!-- Redirección a la página "record" -->
                     <div class="card-footer">
-                            
+                        {% if user.is_staff %}
+                        <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor%}" class="btn-conocer">Editar Registro</a>
+                        {% else %}
                         <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor%}" class="btn-conocer">Conoce más</a>
-    
+                        {% endif %}
                     </div>
                 </div>
             </div>
