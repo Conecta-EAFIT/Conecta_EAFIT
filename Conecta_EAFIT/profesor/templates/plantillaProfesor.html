@@ -10,19 +10,41 @@
         .imagen_perfil {
             width: 300px;
             height: 300px;
-            
+            border: 4px solid #1845ad;
+            border-radius: 12px;
         }
         .container {
             margin: 2em;
             padding: 2em;
         }
+        .informacion {
+            margin-top: 20px;
+        }
+        .informacion h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .informacion p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="contenedor">
-        <img src="{{ profesor.image.url }}"  class="imagen_perfil" alt="">
+    <div class="container">
+        <img src="{{ profesor.image.url }}"  class="imagen_perfil" alt="{{ profesor.title }}">
         <div class="informacion">
+            <h2>{{ profesor.title }}</h2>
+            <p><strong>Carreras:</strong> 
+                {% for career in profesor.carreers.all %}
+                    {{ career }}{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Descripción:</strong> {{ profesor.description }}</p>
+            <p><strong>Rating: </strong>
+                {{ profesor.rating }}
+            </p>
         </div>
     </div>
 </body>
