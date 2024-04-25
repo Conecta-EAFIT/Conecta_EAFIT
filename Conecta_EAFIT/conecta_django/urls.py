@@ -21,6 +21,7 @@ from ingreso import views as ingresoViews
 from noticias import views as noticiasViews
 from usuario import views as usuarioViews
 
+
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -44,7 +45,7 @@ urlpatterns = [
     path('delete_record/<int:pk>', profesorViews.delete_record, name='delete_record'),
     path('profesor_por_carrera/<str:carrera_id>/', profesorViews.profesor_por_carrera, name='profesor_por_carrera'),
     path('update_record/<int:pk>', profesorViews.update_record, name='update_record') ,
-    path('conectaHome_admin/', usuarioViews.custom_login, name='conectaHome_admin'),
+    path('conectaHome_admin/', profesorViews.conectaHome_admin, name='conectaHome_admin'),
     path('<str:nombreP>/<int:pk>', profesorViews.plantillaProfesor, name='plantillaProfesor'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

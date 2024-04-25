@@ -87,7 +87,9 @@
                     
                     <!-- Redirección a la página "record" -->
                     <div class="card-footer">
-                        <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor.title%}" class="btn-conocer">Conoce más</a>
+                            
+                        <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor%}" class="btn-conocer">Conoce más</a>
+    
                     </div>
                 </div>
             </div>

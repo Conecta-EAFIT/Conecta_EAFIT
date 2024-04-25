@@ -1,6 +1,5 @@
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -27,13 +26,20 @@
         .nav-link {
             color: #fff; /* Cambia el color del texto del enlace */
         }
+        .move-right {
+            margin-right: 100px; /* Ajusta el margen derecho según sea necesario */
+        }
     </style>
 </head>
 
 <nav class="navbar p-3 navbar-expand-sm navbar-dark" style="background-color: #1845ad;">
     <ul class="navbar-nav">
         <li class="nav-item">
+            {% if user.is_staff %}
+            <a class="nav-link" href="{% url 'conectaHome_admin' %}">Conecta</a>
+            {% else %}
             <a class="nav-link" href="{% url 'conectaHome' %}">Conecta</a>
+            {% endif %}
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'profesores' %}">Profesores</a>
@@ -44,6 +50,11 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">Nosotros</a>
         </li>
+        {% if user.is_staff %}
+        <li class="nav-item move-right"> <!-- Añade una clase para identificar el elemento -->
+            <a class="nav-link" href="{% url 'add_record' %}">Añadir un profesor</a>
+        </li>
+        {% endif %}
         <li class="nav-item nav-item-salir">
             <a class="nav-link" href="{% url 'signout' %}">Salir</a>
         </li>
@@ -54,3 +65,4 @@
     {% block content %}
     {% endblock content %}
 </div>
+</html>

@@ -20,6 +20,9 @@ def _profesores(request):
 def conectaHome(request):
     return render (request, 'conectaHome.html')
 
+def conectaHome_admin(request):
+    return render (request, 'conectaHome_admin.html')
+
 
 def _about(request):
     return render(request, 'about.html')
@@ -44,10 +47,9 @@ def delete_record(request, pk):
 		delete_it = Profesor.objects.get(id=pk)
 		delete_it.delete()
 		messages.success(request, "Record Deleted Successfully...")
-		return redirect('conectaHome')
+		return redirect('_profesores')
 	else:
 		messages.success(request, "You Must Be Logged In To Do That...")
-		return redirect('conectaHome')
 
 
 def add_record(request):

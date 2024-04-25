@@ -45,6 +45,10 @@
             <p><strong>Rating: </strong>
                 {{ profesor.rating }}
             </p>
+            {% if user.is_staff %}
+            <a href="{% url 'update_record' profesor.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'delete_record' profesor.id %}" class="btn btn-danger">Borrar</a>
+            {% endif %}
         </div>
     </div>
 </body>

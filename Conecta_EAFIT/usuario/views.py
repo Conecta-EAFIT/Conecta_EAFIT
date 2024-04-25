@@ -8,7 +8,7 @@ def custom_login(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
+            login(request)
             # Verificar el tipo de usuario
             if Administrador.objects.filter(usuario=user).exists():
                 return redirect('profesor:conectaHome_admin')
