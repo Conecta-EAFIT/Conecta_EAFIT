@@ -45,6 +45,6 @@ urlpatterns = [
     path('profesor_por_carrera/<str:carrera_id>/', profesorViews.profesor_por_carrera, name='profesor_por_carrera'),
     path('update_record/<int:pk>', profesorViews.update_record, name='update_record') ,
     path('conectaHome_admin/', usuarioViews.custom_login, name='conectaHome_admin'),
-
+    path('<str:nombreP>/<int:pk>', profesorViews.plantillaProfesor, name='plantillaProfesor'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

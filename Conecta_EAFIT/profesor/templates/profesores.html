@@ -56,9 +56,18 @@
                 <label for="searchProfesor" class="form-label space-top">Busca Por el Nombre del Profesor:</label>
                 <input type="text" class="form-control" name="searchProfesor" id="searchProfesor" />
             </div>
-            <button type="submit" class="btn btn-primary space-bottom" style="background-color: #1845ad;">Buscar</button>
+            <button type="submit" class="btn btn-primary space-bottom" style="background-color: #1845ad;">Buscar Profesor</button>
         </form>
         <p>Buscando por: {{ searchTerm }}</p>
+
+        <form action="">
+            <div class="mb-3">
+                <label for="searchProfesor1" class="form-label space-top">Busca Por la carrera del Profesor:</label>
+                <input type="text" class="form-control" name="searchProfesor1" id="searchProfesor1" />
+            </div>
+            <button type="submit" class="btn btn-primary space-bottom" style="background-color: #1845ad;">Buscar por carrera</button>
+        </form>
+        <p>Buscando por: {{ searchTerm1 }}</p>
         <div class="row row-cols-1 row-cols-md-3 g-2">
             {% for profesor in profesores %}
             <div class="col d-flex align-items-stretch">
@@ -78,7 +87,7 @@
                     
                     <!-- Redirección a la página "record" -->
                     <div class="card-footer">
-                        <a href="{% url 'update_record' pk=profesor.pk %}" class="btn-conocer">Conoce más</a>
+                        <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor.title%}" class="btn-conocer">Conoce más</a>
                     </div>
                 </div>
             </div>

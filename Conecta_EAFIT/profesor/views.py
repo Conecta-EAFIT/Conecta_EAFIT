@@ -8,11 +8,14 @@ from .models import Profesor, Carrera
 
 def _profesores(request):
     searchTerm = request.GET.get('searchProfesor')
+    searchTerm1 = request.GET.get('searchProfesor1')
     if searchTerm:
         profesores = Profesor.objects.filter(title__icontains=searchTerm)
+    elif searchTerm1:
+        profesores = Profesor.objects.filter(carreers__name_carreer__icontains=searchTerm1)
     else:
         profesores = Profesor.objects.all()
-    return render(request, 'profesores.html', {'searchTerm':searchTerm, 'profesores': profesores})
+    return render(request, 'profesores.html', {'searchTerm': searchTerm, 'searchTerm1': searchTerm1, 'profesores': profesores})
 
 def conectaHome(request):
     return render (request, 'conectaHome.html')
@@ -62,8 +65,6 @@ def add_record(request):
         messages.success(request, "You Must Be Logged In...")
         return redirect('conectaHome')
 
-
-
 def update_record(request, pk):
     current_record = Profesor.objects.get(id=pk)
     if request.method == 'POST':
@@ -75,3 +76,9 @@ def update_record(request, pk):
     else:
         form = AddRecordForm(instance=current_record)
     return render(request, 'update_record.html', {'form': form})
+
+def plantillaProfesor(request, pk, nombreP):
+    profesor = Profesor.objects.get(id=pk, title=nombreP)
+    
+    return render(request, 'plantillaProfesor.html', {'profesor': profesor})
+
