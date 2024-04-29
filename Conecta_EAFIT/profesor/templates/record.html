@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <strong>{{ Profesor.title}}</strong>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Identificacion: </strong>{{ Profesor.cedula }}
+    </p>
+
+    <p class="card-text">
+      <strong>Fecha de nacimiento: </strong>{{ Profesor.year }}
+    </p>
+
+    <p class="card-text">
+      <strong>ID: </strong>{{ Profesor.id }}
+    </p>
+  </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'conectaHome' %}" class="btn btn-secondary">Back</a>
+<a href="{% url 'delete_record' Profesor.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'update_record' Profesor.id %}" class="btn btn-danger">Editar</a>
+
+{% endblock %}

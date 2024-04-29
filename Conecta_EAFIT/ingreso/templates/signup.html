@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Signup Page</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #ffffff; /* Cambiado a blanco */
+    color: #1845ad; /* Cambiado a azul */
+    font-family: 'Poppins', sans-serif; /* Cambiado a la fuente Poppins */
+}
+.background{
+    display: none; /* Ocultamos las bolas decorativas */
+}
+form{
+    height: 600px;
+    width: 450px;
+    background-color: rgba(255,255,255,0.9); /* Cambiado a un blanco ligeramente transparente */
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 2px solid rgba(24, 69, 173, 0.1); /* Cambiado a azul ligeramente transparente */
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins', sans-serif;
+    color: #1845ad; /* Cambiado a azul */
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(24, 69, 173, 0.07); /* Cambiado a azul ligeramente transparente */
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #1845ad; /* Cambiado a azul para mejorar la visibilidad del texto */
+}
+::placeholder{
+    color: #9a9a9a; /* Cambiado a un gris más claro */
+}
+button{
+    margin-top: 14px;
+    width: 100%;
+    background-color: #1845ad; /* Cambiado a azul */
+    color: #ffffff; /* Cambiado a blanco */
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+a {
+    color: #1845ad; /* Cambiado a azul */
+    display: block;
+    text-align: center;
+    margin-top: 20px; /* Ajuste de margen superior */
+}
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form action="/signup/" method="post">
+    {% csrf_token %}
+        <h3>Registrese Aquí</h3>
+       {% csrf_token %}
+
+        <label for="username">Nombre de Usuario</label>
+        <input type="text" id="username" name="username" placeholder="Nombre de Usuario" Required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" Required>
+
+        <label for="password1">Contraseña</label>
+        <input type="password" id="password1" name="password1" placeholder="Password" Required>
+
+        <label for="password2">Confirmar Contraseña</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirmar Password" Required>
+        <button type="submit">Signup</button>
+
+        <a href="{% url 'login' %}" >Ya tienes una cuenta? Ingrese Aqui</a>
+    </form>
+</body>
+</html>
