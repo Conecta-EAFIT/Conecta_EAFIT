@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .imagen_perfil {
+            width: 300px;
+            height: 300px;
+            border: 4px solid #1845ad;
+            border-radius: 12px;
+        }
+        .container {
+            margin: 2em;
+            padding: 2em;
+        }
+        .informacion {
+            margin-top: 20px;
+        }
+        .informacion h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .informacion p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+
+<!--        .estrellita {-->
+<!--            border: none;-->
+<!--            background: none;-->
+<!--            font-size: 25px;-->
+<!--            color: transparent;-->
+<!--            cursor: pointer;-->
+<!--            outline: none;-->
+<!--            padding-left: 10px; /* Espacio para el texto */-->
+<!--        }-->
+
+<!--        .estrellita:before {-->
+<!--            content: "\2605"; /* Código Unicode para el símbolo de estrella */-->
+<!--            font-size: 30px;-->
+<!--            color: #999; /* Color de la estrella cuando no se está hover */-->
+<!--            margin-right: 5px; /* Espacio entre la estrella y el texto */-->
+<!--        }-->
+
+<!--        .estrellita:hover:before {-->
+<!--            color: gold; /* Color de la estrella al pasar el mouse */-->
+<!--        }-->
+
+           .circle-button {
+                border: 2px solid #white; /* Borde azul */
+                background-color: #1845ad; /* Fondo azul */
+                border-radius: 50%; /* Forma de círculo */
+                color: white; /* Color de texto blanco */
+                cursor: pointer;
+                outline: none;
+                padding: 12px; /* Espacio interno para el texto */
+                font-size: 12px; /* Tamaño de la fuente */
+                width: 60px; /* Ancho del botón */
+                height: 60px; /* Altura del botón */
+                text-align: center; /* Centrar el texto horizontalmente */
+                line-height: 60px; /* Centrar el texto verticalmente */
+                transition: background-color 0.3s, color 0.3s; /* Transición suave al pasar el mouse */
+            }
+
+           .circle-button:hover {
+               background-color: white; /* Fondo blanco al pasar el mouse */
+               color: ##1845ad; /* Texto azul al pasar el mouse */
+           }
+
+           .space-bottom{
+              margin-bottom:50px;
+           }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ profesor.image.url }}"  class="imagen_perfil" alt="{{ profesor.title }}">
+        <div class="informacion">
+            <h2>{{ profesor.title }}</h2>
+            <p><strong>Carreras:</strong>
+                {% for career in profesor.carreers.all %}
+                    {{ career }}{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Descripción:</strong> {{ profesor.description }}</p>
+            <p><strong>Rating: </strong>
+                {{ profesor.rating }}
+            </p>
+            {% if user.is_staff %}
+            <a href="{% url 'update_record' profesor.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'delete_record' profesor.id %}" class="btn btn-danger">Borrar</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div>
+        <h2 class="space-bottom">Rating del profesor: {{ promedio_votos }}</h2>
+
+        {% if voto_usuario %}
+            <h3>Tu voto: {{ voto_usuario }}</h3>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {% if not voto_usuario %}
+                <button class="circle-button" type="submit" name="voto" value="1">1</button>
+                <button class="circle-button" type="submit" name="voto" value="2">2</button>
+                <button class="circle-button" type="submit" name="voto" value="3">3</button>
+                <button class="circle-button" type="submit" name="voto" value="4">4</button>
+                <button class="circle-button" type="submit" name="voto" value="5">5</button>
+            {% endif %}
+        </form>
+    </div>
+</body>
+{% endblock content %}

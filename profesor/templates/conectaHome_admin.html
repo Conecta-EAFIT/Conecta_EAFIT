@@ -1,0 +1,80 @@
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista del Administrador</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("../../media/interfaz/images/BIBLIOTECA_EAFIT.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #1845ad;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            height: 100vh;
+        }
+        .container-selectors {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+            position: absolute;
+            padding: 3em;
+            width: calc(50% - 3em); /* 50% del ancho de la pantalla menos el espacio del padding */
+        }
+
+        .container-selectors:nth-child(2) {
+            right: 0; /* Posiciona el segundo contenedor a la derecha */
+            background-color: rgba(255, 255, 255, 0);
+
+        }
+        .logo h1 {
+            color: #1845ad;
+            font-size: 85px;
+        }
+
+        .btn-home{
+            padding: 24px 45px;
+            font-size: 30px;
+            border-radius: 15px;
+            background-color: #f4f4f4;
+            color: #1845ad;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .btn-home:hover {
+            background-color: #3057a6;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+{% extends "base.html" %}
+{% block content %}
+    <div class="container-selectors">
+        <div class="logo">
+            <h1>Conecta Eafit - Administradores </h1>
+        </div>
+    </div>
+    <div class="container-selectors">
+        <div class="button-container">
+            <a href="{% url 'profesores' %}" class="btn-home">Busca Profesores</a>
+        </div>
+    </div>
+{% endblock content %}
+</body>

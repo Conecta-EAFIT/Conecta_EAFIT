@@ -1,0 +1,88 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Conecta EAFIT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0054a6;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+header img {
+    width: 100px;
+}
+
+h1, h2 {
+    color: #0054a6;
+}
+
+main {
+    padding: 20px;
+}
+
+section#about {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+a {
+    color: #0054a6;
+}
+
+footer {
+    background-color: #002d62;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+    </style>
+</head>
+
+{% extends "base.html" %}
+{% block content %}
+<header>
+    <img src="https://www.bureaumedellin.com/wp-content/uploads/2020/11/eafit_4487008897.png" alt="Logo EAFIT">
+    <h1>¡Conecta con tus profesores!</h1>
+</header>
+<main>
+    <section id="about">
+        <h2>Sobre Nosotros</h2>
+        <p>El propósito de Conecta EAFIT es que los alumnos conozcan toda la información de todos los profesores de la Universidad EAFIT.</p>
+        <p>Somos un equipo de cuatro estudiantes de Ingeniería de Sistemas, en nuestro quinto semestre en EAFIT:</p>
+        <ul>
+            <li>Jose Alejandro Duque (Product Owner)</li>
+            <li>Pedro Saldarriaga (Developer)</li>
+            <li>Miguel Angel Diaz (Scrum Master)</li>
+            <li>Jose Miguel Burgos (Developer)</li>
+        </ul>
+        <p>Síguenos en Instagram para más actualizaciones:</p>
+        <ul>
+            <li><a href="https://www.instagram.com/joseduquep">@joseduquep</a></li>
+            <li><a href="https://www.instagram.com/pedrosaldarriaga_">@pedrosaldarriaga_</a></li>
+            <li><a href="https://www.instagram.com/mdiaz__v">@mdiaz__v</a></li>
+            <li><a href="https://www.instagram.com/jburgos_1104">@jburgos_1104</a></li>
+        </ul>
+    </section>
+</main>
+<footer>
+    <p>© 2024 Conecta EAFIT. Todos los derechos reservados.</p>
+</footer>
+{% endblock content %}
