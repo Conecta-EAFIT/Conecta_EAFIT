@@ -1,17 +1,29 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
-  <h1>Añadir Profesor</h1>
-  <br />
-
-  <form method="POST" action="{% url 'add_record' %}">
-    {% csrf_token %} {{ form.as_p }}
-
-    <br />
-    <button type="submit" class="btn btn-secondary">Añadir</button>
-    <a href="{% url 'home1' %}" class="btn btn-secondary">Back</a>
-  </form>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Añadir Profesor</h1>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{% url 'add_record' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form.as_p }}
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Añadir</button>
+              <a href="{% url 'home1' %}" class="btn btn-secondary">Volver al Menú</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

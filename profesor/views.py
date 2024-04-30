@@ -64,7 +64,7 @@ def add_record(request):
             if form.is_valid():
                 form.save()
                 messages.success(request, "Record Added...")
-                return redirect('Conectahome')
+                return redirect('conectaHome')
         else:
             form = AddRecordForm()
         return render(request, 'add_record.html', {'form': form})
