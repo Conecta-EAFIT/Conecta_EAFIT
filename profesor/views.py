@@ -87,7 +87,7 @@ def plantillaProfesor(request, pk, nombreP):
 
     usuario = request.user
     profesor = get_object_or_404(Profesor, title=nombreP)
-    promedio_votos = Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg']
+    promedio_votos = round(Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg'], 1)
 
     voto_usuario = None
     if Voto.objects.filter(usuario=usuario, profesor=profesor).exists():
@@ -97,7 +97,7 @@ def plantillaProfesor(request, pk, nombreP):
         if not Voto.objects.filter(usuario=usuario, profesor=profesor).exists():
             valor_voto = int(request.POST['voto'])
             voto = Voto.objects.create(usuario=usuario, profesor=profesor, valor=valor_voto)
-            promedio_votos = Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg']
+            promedio_votos = round(Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg'], 1)
             voto_usuario = valor_voto  # Actualiza el voto del usuario después de votar
 
     return render(request, 'plantillaProfesor.html',
