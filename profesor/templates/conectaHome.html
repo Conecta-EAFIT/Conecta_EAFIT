@@ -69,6 +69,9 @@
     <div class="container-selectors">
         <div class="logo">
             <img src="../../media/interfaz/images/logo-azul.png">
+            {% if user.is_staff %}
+                <h1>Administrador</h1>
+            {% endif %}
         </div>
     </div>
     <div class="container-selectors">

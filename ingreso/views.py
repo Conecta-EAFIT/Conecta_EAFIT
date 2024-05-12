@@ -44,16 +44,9 @@ def login(request):
         #     return redirect('home1')
         if user is not None:
             auth_login(request, user)
-            if user.is_staff:
-                # El usuario es un administrador
-                print("El usuario es admin")
-                administrador, creado = Administrador.objects.get_or_create(usuario=user, defaults={'nombre': user.username, 'email': user.email})
-                return redirect('conectaHome_admin')
-            else:
-                # El usuario no es un administrador, se asume que es un estudiante
-                print("El usuario es estudiante")
-                estudiante, creado = Estudiante.objects.get_or_create(usuario=user, defaults={'nombre': user.username, 'email': user.email})
-                return redirect('conectaHome')
+            print("El usuario es estudiante")
+            estudiante, creado = Estudiante.objects.get_or_create(usuario=user, defaults={'nombre': user.username, 'email': user.email})
+            return redirect('conectaHome')
         else:
             messages.error(request, "Los datos ingresados son inválidos")
             return redirect('home1')

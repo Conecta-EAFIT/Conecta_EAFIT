@@ -25,10 +25,6 @@ def _profesores(request):
 def conectaHome(request):
     return render (request, 'conectaHome.html')
 
-def conectaHome_admin(request):
-    return render (request, 'conectaHome_admin.html')
-
-
 def _about(request):
     return render(request, 'about.html')
 
