@@ -84,14 +84,20 @@
         <img src="{{ profesor.image.url }}"  class="imagen_perfil" alt="{{ profesor.title }}">
         <div class="informacion">
             <h2>{{ profesor.title }}</h2>
-            <p><strong>Carreras:</strong>
+            
+            <p><strong>Descripción:</strong> {{ profesor.description }}</p>     
+            <p><strong>Formación Academica:</strong> {{ profesor.education }}</p>     
+            <p><strong>Rating: </strong>
+                {% if promedio_votos %}
+                    {{ promedio_votos }}
+                {% else %}
+                    Sin rating disponible
+                {% endif %}
+            </p>
+            <p><strong>Carreras a las que enseña:</strong>
                 {% for career in profesor.carreers.all %}
                     {{ career }}{% if not forloop.last %},{% endif %}
                 {% endfor %}
-            </p>
-            <p><strong>Descripción:</strong> {{ profesor.description }}</p>
-            <p><strong>Rating: </strong>
-                {{ profesor.rating }}
             </p>
             {% if user.is_staff %}
             <a href="{% url 'update_record' profesor.id %}" class="btn btn-primary">Editar</a>
@@ -101,7 +107,7 @@
     </div>
 
     <div>
-        <h2 class="space-bottom">Rating del profesor: {{ promedio_votos }}</h2>
+        <h2 class="space-bottom">Rating del profesor: {{ Voto.promedio_votos }}</h2>
 
         {% if voto_usuario %}
             <h3>Tu voto: {{ voto_usuario }}</h3>

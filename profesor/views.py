@@ -52,7 +52,7 @@ def delete_record(request, pk):
 		delete_it = Profesor.objects.get(id=pk)
 		delete_it.delete()
 		messages.success(request, "Record Deleted Successfully...")
-		return redirect('_profesores')
+		return redirect('profesores')
 	else:
 		messages.success(request, "You Must Be Logged In To Do That...")
 
