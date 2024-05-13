@@ -47,11 +47,13 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">Nosotros</a>
         </li>
+
         {% if user.is_staff %}
         <li class="nav-item move-right">
             <a class="nav-link" href="{% url 'add_record' %}">Añadir un profesor</a>
         </li>
         {% endif %}
+
         <li class="nav-item nav-item-salir">
             <a class="nav-link" href="{% url 'signout' %}">Salir</a>
         </li>

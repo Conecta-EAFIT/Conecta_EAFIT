@@ -23,8 +23,20 @@
             <h5 class="card-title">{{ noticia.headline }}</h5>
             <!-- Cuerpo de la noticia -->
             <p class="card-text">{{ noticia.body }}</p>
-            <!-- Fecha de la noticia -->
+            <!-- Agregar el autor -->
+            <h6 class="card-text small text-muted">Profesor(es) de la noticia: {% with profesor=noticia.author %}
+              {% if profesor %}
+              {% for profesor in noticia.author.all %}
+              <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor %}" class="btn-conocer">- {{ profesor.title }}</a>
+            {% endfor %}
+                        {% endif %}
+            {% endwith %}</p>
+                <!-- Fecha de la noticia -->
             <p class="card-text small text-muted">{{ noticia.date }}</p>
+            {% if user.is_staff %}
+            <a href="{% url 'update_noticias' pk=noticia.pk %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'delete_noticias' pk=noticia.pk %}" class="btn btn-danger">Borrar</a>
+            {% endif %}
           </div>
         </div>
       </div>
