@@ -87,7 +87,7 @@ def plantillaProfesor(request, pk, nombreP):
 
     usuario = request.user
     profesor = get_object_or_404(Profesor, title=nombreP)
-    promedio_votos = round(Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg'], 1)
+    promedio_votos = Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg']
 
     voto_usuario = None
     nuevo_comentario =None
