@@ -34,3 +34,11 @@ class Voto(models.Model):
     class Meta:
         unique_together = ['usuario', 'profesor']  # Esto garantiza que un usuario solo pueda votar una vez por cada profesor
 
+class Comentario(models.Model):
+    texto = models.TextField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['usuario', 'profesor']  # Un usuario solo puede comentar una vez por profesor
