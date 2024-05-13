@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
-from .models import Voto
+from .models import Voto, Comentario
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
@@ -87,18 +87,33 @@ def plantillaProfesor(request, pk, nombreP):
 
     usuario = request.user
     profesor = get_object_or_404(Profesor, title=nombreP)
-    promedio_votos = Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg']
+    promedio_votos = round(Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg'], 1)
 
     voto_usuario = None
+    nuevo_comentario =None
     if Voto.objects.filter(usuario=usuario, profesor=profesor).exists():
         voto_usuario = Voto.objects.get(usuario=usuario, profesor=profesor).valor
 
     if request.method == 'POST':
-        if not Voto.objects.filter(usuario=usuario, profesor=profesor).exists():
-            valor_voto = int(request.POST['voto'])
-            voto = Voto.objects.create(usuario=usuario, profesor=profesor, valor=valor_voto)
-            promedio_votos = round(Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg'], 1)
-            voto_usuario = valor_voto  # Actualiza el voto del usuario después de votar
+        if 'voto' in request.POST:  # Verificar si se envió un voto
+            if not Voto.objects.filter(usuario=request.user, profesor=profesor).exists():
+                valor_voto = int(request.POST['voto'])
+                voto = Voto.objects.create(usuario=request.user, profesor=profesor, valor=valor_voto)
+                promedio_votos = round(Voto.objects.filter(profesor=profesor).aggregate(Avg('valor'))['valor__avg'], 1)
+                voto_usuario = valor_voto  # Actualiza el voto del usuario después de votar
+        elif 'texto' in request.POST:  # Verificar si se envió un comentario
+            texto_comentario = request.POST.get('texto')
+            comentario_existente = Comentario.objects.filter(usuario=request.user, profesor=profesor).exists()
 
-    return render(request, 'plantillaProfesor.html',
-                  {'profesor': profesor, 'voto_usuario': voto_usuario, 'promedio_votos': promedio_votos})
+            if not comentario_existente:
+                nuevo_comentario = Comentario.objects.create(texto=texto_comentario, usuario=request.user,profesor=profesor)
+
+    comentarios = Comentario.objects.filter(profesor=profesor)
+
+    return render(request, 'plantillaProfesor.html', {
+        'profesor': profesor,
+        'voto_usuario': voto_usuario,
+        'promedio_votos': promedio_votos,
+        'comentarios': comentarios,  # Pasar todos los comentarios del profesor a la plantilla
+        'nuevo_comentario': nuevo_comentario
+    })

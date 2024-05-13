@@ -189,5 +189,22 @@
             {% endif %}
         </div>
     </div>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="texto" rows="4" cols="50"></textarea><br>
+            <button type="submit">Comentar</button>
+        </form>
+        <h2>Comentarios:</h2>
+            <ul>
+                {% for comentario in comentarios %}
+                    <li>
+                        <strong>{{ comentario.usuario.username }}</strong> - {{ comentario.texto }} ({{ comentario.fecha }})
+                    </li>
+                {% empty %}
+                    <li>No hay comentarios aún.</li>
+                {% endfor %}
+            </ul>
+    </div>
 </body>
 {% endblock content %}
