@@ -37,7 +37,7 @@
             padding: 1em;
             position: absolute;
             display: inline;
-            width: 400px;
+            width: 500px;
             height: 200px;
         }
         .informacion p {
@@ -48,8 +48,12 @@
             display: inline-block;
             font-size: x-small;
         }
+        .profesor-item a{
+            color: white;
+            text-decoration: none;
+        }
         aside {
-            width: 60%;
+            width: 55%;
             padding: 1em;
             margin-right: 1em;
             height: 90%;
@@ -59,6 +63,12 @@
         }
         .contenedor-profesor {
             margin: 0 2em;
+            padding: 1em;
+            border: 2px solid #287CED;
+            border-radius: 1em;
+        }
+        .contenedor-profesor .title-cont-carreras {
+            font-size: x-large;
         }
         .carrera {
             border: 2px solid black;
@@ -82,7 +92,7 @@
         .circle-button {
             border: 1px solid #000;
             background-color: #1845ad;
-            border-radius: 50%;
+            border-radius: 5%;
             color: #fff;
             cursor: pointer;
             font-size: 12px;
@@ -114,19 +124,19 @@
 
         <div class="informacion">
             <div>
-                <i class="user fa-solid fa-user fa-lg"></i>
+                <i class="fa-solid fa-user fa-lg"></i>
                 <p class="profesor-item">{{ profesor.title }}</p>
             </div>
             
             <div>
-                <i class="user fa-solid fa-envelope fa-lg"></i>
+                <i class="fa-solid fa-envelope fa-lg"></i>
                 <p class="profesor-item"> {{ profesor.email }} </p>
             </div>
 
 
             <div>
-                <i class="user fa-brands fa-linkedin fa-lg"></i>
-                <p class="profesor-item"> {{ profesor.url }} </p>
+                <i class="fa-brands fa-linkedin fa-lg"></i>
+                <p class="profesor-item"><a href="{{ profesor.url }}" target="_blank">{{ profesor.url }} </a></p>
             </div>
 
         </div>
@@ -139,6 +149,7 @@
     </div>
     
     <div class="contenedor-profesor">
+        <p class="title-cont-carreras">Materias relacionadas: </p>
         {% for career in profesor.carreers.all %}
         <p class="carrera">
             {{ career }}
