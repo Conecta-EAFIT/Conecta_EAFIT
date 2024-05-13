@@ -10,14 +10,16 @@ class Carrera(models.Model):
     
 class Profesor(models.Model):
     title = models.CharField(max_length=100)
+    email = models.EmailField(blank=True)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='profesor/images/', default='profesor/images/defaultt.jpg')
     url = models.URLField(blank=True)
     genre = models.CharField(blank=True, max_length=250)
-    year = models.IntegerField(blank=True, null=True)
+    year = models.DateField(blank=True, null=True)
     carreers = models.ManyToManyField(Carrera, related_name='profesores', blank=True)
     education = models.TextField(blank=True)
     
+
     def __str__(self):
         return self.title
 
