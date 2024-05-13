@@ -6,6 +6,6 @@ class Noticias(models.Model):
     headline = models.CharField(max_length=200)
     body = models.TextField()
     date = models.DateField()
-    author = models.ForeignKey(Profesor, on_delete=models.SET_NULL, null=True, related_name='noticias')
+    author = models.ManyToManyField(Profesor, related_name='noticias', blank=True)
 
     def __str__(self): return self.headline

@@ -53,4 +53,4 @@ def update_noticias(request, pk):
             return redirect('conectaHome')
     else:
         form = AddNoticiaForm(instance=current_record)
-    return render(request, 'update_record.html', {'form': form})
+    return render(request, 'update_noticias.html', {'form': form})
