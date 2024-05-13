@@ -24,8 +24,13 @@
             <!-- Cuerpo de la noticia -->
             <p class="card-text">{{ noticia.body }}</p>
             <!-- Agregar el autor -->
-            <p class="card-text small text-muted">Profesor involucrado: {{ noticia.author }}</p>
-            <!-- Fecha de la noticia -->
+            <h6 class="card-text small text-muted">Profesor de la noticia: {% with profesor=noticia.author %}
+              {% if profesor %}
+                <a href="{% url 'plantillaProfesor' pk=profesor.pk nombreP=profesor %}" class="btn-conocer">{{ profesor.title }}</a>
+              {% endif %}
+            {% endwith %}</p>
+            
+                <!-- Fecha de la noticia -->
             <p class="card-text small text-muted">{{ noticia.date }}</p>
             
           </div>
