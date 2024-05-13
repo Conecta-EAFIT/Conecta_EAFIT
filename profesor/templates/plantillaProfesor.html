@@ -2,104 +2,196 @@
 {% block content %}
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             padding: 0;
             margin: 0;
         }
+        .container {
+            margin: 0 auto;
+            padding: 1em;
+            max-width: max-content;
+        }
+        .contenedor {
+            margin: 1em 2em;
+            padding: 2em;
+            width: 100%;
+            height: 420px;
+            max-width: fit-content;
+            background-color: #1845ad;
+            display: block;
+            place-items: center;
+            border-radius: 1em;
+            color: #fff;
+            border: 2px solid black;
+        }
         .imagen_perfil {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             border: 4px solid #1845ad;
             border-radius: 12px;
-        }
-        .container {
-            margin: 2em;
-            padding: 2em;
+            margin-right: 1em;
         }
         .informacion {
-            margin-top: 20px;
-        }
-        .informacion h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            padding: 1em;
+            position: absolute;
+            display: inline;
+            width: 400px;
+            height: 200px;
         }
         .informacion p {
             font-size: 16px;
             margin-bottom: 10px;
         }
-
+        .profesor-item {
+            display: inline-block;
+            font-size: x-small;
+        }
+        aside {
+            width: 60%;
+            padding: 1em;
+            margin-right: 1em;
+            height: 90%;
+            border: 2px solid #287CED;
+            border-radius: 1em;
+            float: right;
+        }
+        .contenedor-profesor {
+            margin: 0 2em;
+        }
+        .carrera {
+            border: 2px solid black;
+            background-color: #1845ad;
+            border-radius: 1em;
+            text-align: center;
+            display: inline-block;
+            color: #fff;
+            padding: 1em;
+            width: 250px;
+            font-size: large;
+        }
+        .contenedor-rating {
+            margin: 0 2em;
+        }
+        .space-bottom {
+            margin-bottom: 0;
+            margin-right: .5em;
+            float: left;
+        }
         .circle-button {
-            border: 2px solid #fff; /* Borde azul */
-            background-color: #1845ad; /* Fondo azul */
-            border-radius: 50%; /* Forma de círculo */
-            color: #1845ad; /* Color de texto blanco */
+            border: 1px solid #000;
+            background-color: #1845ad;
+            border-radius: 50%;
+            color: #fff;
             cursor: pointer;
-            outline: none;
-            padding: 12px; /* Espacio interno para el texto */
-            font-size: 12px; /* Tamaño de la fuente */
-            width: 1.5em; /* Ancho del botón */
-            height: 1.5em; /* Altura del botón */
-            text-align: center; /* Centrar el texto horizontalmente */
-            line-height: 60px; /* Centrar el texto verticalmente */
-            transition: background-color 0.3s, color 0.3s; /* Transición suave al pasar el mouse */
+            font-size: 12px;
+            width: 3em;
+            height: 3em;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            display: inline-block;
         }
-
         .circle-button:hover {
-            background-color: white; /* Fondo blanco al pasar el mouse */
-            color: #1845ad; /* Texto azul al pasar el mouse */
+            background-color: white;
+            color: #1845ad;
         }
-
-        .space-bottom{
-            margin-bottom:50px;
+        .profesor-rating {
+            margin: 0 2em;
+            display: block;
+        }
+        .funciones-admin {
+            margin: 0 2em;
+            display: block;
         }
 
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="contenedor">
         <img src="{{ profesor.image.url }}"  class="imagen_perfil" alt="{{ profesor.title }}">
+
         <div class="informacion">
-            <h2>{{ profesor.title }}</h2>
+            <div>
+                <i class="user fa-solid fa-user fa-lg"></i>
+                <p class="profesor-item">{{ profesor.title }}</p>
+            </div>
             
-            <p><strong>Descripción:</strong> {{ profesor.description }}</p>     
-            <p><strong>Formación Academica:</strong> {{ profesor.education }}</p>     
-            <p><strong>Rating: </strong>
-                {% if promedio_votos %}
-                    {{ promedio_votos }}
-                {% else %}
-                    Sin rating disponible
-                {% endif %}
-            </p>
-            <p><strong>Carreras a las que enseña:</strong>
-                {% for career in profesor.carreers.all %}
-                    {{ career }}{% if not forloop.last %},{% endif %}
-                {% endfor %}
-            </p>
-            {% if user.is_staff %}
-            <a href="{% url 'update_record' profesor.id %}" class="btn btn-primary">Editar</a>
-            <a href="{% url 'delete_record' profesor.id %}" class="btn btn-danger">Borrar</a>
-            {% endif %}
+            <div>
+                <i class="user fa-solid fa-envelope fa-lg"></i>
+                <p class="profesor-item"> **Email** </p>
+            </div>
+
+            <div>
+                <i class="user fa-solid fa-building fa-lg"></i>
+                <p class="profesor-item"> **Office** </p>
+            </div>
+
+            <div>
+                <i class="user fa-brands fa-linkedin fa-lg"></i>
+                <p class="profesor-item"> **Linkedin** </p>
+            </div>
+
         </div>
+
+        <aside class="container-description">
+            <p><strong>Descripción:</strong> {{ profesor.description }}</p>
+            <p><strong>Formación Academica:</strong> {{ profesor.education }}</p>
+        </aside>
+        
+    </div>
+    
+    <div class="contenedor-profesor">
+        {% for career in profesor.carreers.all %}
+        <p class="carrera">
+            {{ career }}
+        </p>
+        {% endfor %}
     </div>
 
+    <div class="contenedor-rating">
+        <p><strong>Calificación: </strong>
+            {% if promedio_votos %}
+            {{ promedio_votos }}
+            {% else %}
+            <p>
+                Sin rating disponible
+            </p>
+            {% endif %}
+        </p>
+    </div>
+        
     <div>
-        <h2 class="space-bottom">Rating del profesor: {{ Voto.promedio_votos }}</h2>
-
-        {% if voto_usuario %}
-            <h3>Tu voto: {{ voto_usuario }}</h3>
-        {% endif %}
-
-        <form method="post">
-            {% csrf_token %}
-            {% if not voto_usuario %}
+        <div class="profesor-rating">
+            <p class="space-bottom">
+                Calificación del profesor: {{ Voto.promedio_votos }}
+            </p>
+            
+            <form method="post" class="form-calificion">
+                {% csrf_token %}
+                {% if not voto_usuario %}
                 <button class="circle-button" type="submit" name="voto" value="1">1</button>
                 <button class="circle-button" type="submit" name="voto" value="2">2</button>
                 <button class="circle-button" type="submit" name="voto" value="3">3</button>
                 <button class="circle-button" type="submit" name="voto" value="4">4</button>
                 <button class="circle-button" type="submit" name="voto" value="5">5</button>
+                {% endif %}
+            </form>
+
+            {% if voto_usuario %}
+            <p>
+                {{ voto_usuario }}
+            </p>
             {% endif %}
-        </form>
+        </div>
+
+        <div class="funciones-admin">
+            {% if user.is_staff %}
+                <a href="{% url 'update_record' profesor.id %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'delete_record' profesor.id %}" class="btn btn-danger">Borrar</a>
+            {% endif %}
+        </div>
     </div>
 </body>
 {% endblock content %}
