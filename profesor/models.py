@@ -12,7 +12,7 @@ class Carrera(models.Model):
 class Profesor(models.Model):
     title = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
-    description = models.TextField(blank=True, validators=[MinLengthValidator(120), MaxLengthValidator(500)])
+    description = models.TextField(blank=True, validators=[MinLengthValidator(120)])
     image = models.ImageField(upload_to='profesor/images/', default='profesor/images/defaultt.jpg')
     url = models.URLField(blank=True)
     genre = models.CharField(blank=True, max_length=250)
