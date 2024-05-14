@@ -76,7 +76,7 @@
                     
                     <div class="card-body">
                         <p class="card-text"><strong>Nombre:</strong> {{ profesor.title }}</p>
-                        <p class="card-text"><strong>Carrera(s):</strong> 
+                        <p class="card-text"><strong>Materia(s):</strong> 
                             {% for carrera in profesor.carreers.all %}
                                 {{ carrera.name_carreer }}{% if not forloop.last %}, {% endif %}
                             {% endfor %}
