@@ -58,14 +58,20 @@ def add_record(request):
         if request.method == "POST":
             form = AddRecordForm(request.POST, request.FILES)
             if form.is_valid():
+                print("El formato ha sido diligenciado correctamente")
                 form.save()
-                messages.success(request, "Record Added...")
+                messages.success(request, "Registro añadido exitosamente.")
                 return redirect('conectaHome')
+            else:
+                print("El formato NO FUE diligenciado correctamente")
+                messages.error(request, "* Hubo un error en el diligenciamiento. Revisa todos los campos.")
+                messages.error(request, "* Min de caracteres: 120")
+                messages.error(request, "* El correo debe terminar en un dominio (.com, .co, etc) y debe tener @")
         else:
             form = AddRecordForm()
         return render(request, 'add_record.html', {'form': form})
     else:
-        messages.success(request, "You Must Be Logged In...")
+        messages.error(request, "Debes iniciar sesión para realizar esta acción.")
         return redirect('conectaHome')
 
 def update_record(request, pk):

@@ -38,6 +38,20 @@ class SignUpForm(UserCreationForm):
 # Create Add Record Form
 class AddRecordForm(forms.ModelForm):
 	
+	
 	class Meta:
 		model = Profesor
 		exclude = ("user",)
+		error_messages = {
+            'title': {
+                'required': 'El nombre es obligatorio.',
+            },
+            'email': {
+                'required': 'El email es obligatorio.',
+                'invalid': 'Por favor, introduce una dirección de correo electrónico válida.',
+            },
+            'description': {
+                'required': 'La descripción es obligatoria.',
+            },
+            # Agrega mensajes de error personalizados para otros campos si es necesario
+        }

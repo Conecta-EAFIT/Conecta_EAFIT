@@ -1,8 +1,15 @@
-<!-- formulario_personalizado.html -->
-
 {% extends 'base.html' %}
 
 {% block content %}
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 
 <style>
   /* Estilo personalizado para los campos del formulario */
@@ -45,7 +52,7 @@
               {{ form.email }}
             </div>
             <div class="form-group">
-              <label for="id_description">Descripción:</label>
+              <label for="id_description">Descripción (MIN 120 caracteres):</label>
               {{ form.description }}
             </div>
             
