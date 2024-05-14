@@ -5,24 +5,86 @@
 {% block content %}
 
 <style>
-  /* Estilo personalizado para los campos del formulario */
   .form-group {
-    margin-bottom: 20px; /* Espacio entre cada campo */
+    margin-bottom: 20px;
   }
-
-  /* Estilo personalizado para el campo de descripción */
   #id_description {
-    height: 200px; /* Altura del campo de descripción */
-    resize: vertical; /* Permitir que el campo de descripción se redimensione verticalmente */
+    height: 200px;
+    resize: vertical;
   }
-
-  /* Estilo personalizado para el campo de imagen */
   #id_image {
-    width: 100%; /* Ancho del campo de imagen */
+    width: 100%;
   }
-
-  /* Estilo personalizado para los demás campos */
-  /* Puedes agregar estilos adicionales según tus necesidades */
+  .form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  .form-group input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  .form-group input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  .form-group #id_image {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #1845ad;
+    color: white;
+    border: 1px solid #1845ad;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+    appearance: none;
+  }
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+    resize: vertical;
+    min-height: 100px;
+  }
 </style>
 
 <div class="container">
