@@ -3,66 +3,86 @@
 <head>
     <!-- Agrega tus enlaces a Bootstrap y otros archivos de estilo aquí -->
     <style>
-        form {
-            margin: auto;
-            max-width: 500px;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
+        .form-group {
+            margin-bottom: 20px;
         }
-
-        input[type="text"] {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
+        #id_description {
+            height: 200px;
+            resize: vertical;
+        }
+        #id_image {
             width: 100%;
-            box-sizing: border-box;
         }
-
-        input[type="number"] {
-            display: block;
-            width: 50%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: blue;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
+        .form-group input[type="text"] {
             width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .form-group input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .form-group #id_image {
+            display: inline-block;
+            padding: 10px 20px;
             cursor: pointer;
-            transition: 0.3s;
+            background-color: #1845ad;
+            color: white;
+            border: 1px solid #1845ad;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        .button:hover {
-            background-color: lightblue;
-        }
-
-        select {
+        .form-group select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin: 8px 0;
             box-sizing: border-box;
-            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             font-size: 16px;
+            background-color: #f8f8f8;
             color: #333;
-          }
-
-          select option {
-            background-color: #fff;
-            color: #333;
+            appearance: none;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             font-size: 16px;
-          }
-
+            background-color: #f8f8f8;
+            color: #333;
+            resize: vertical;
+            min-height: 100px;
+        }
     </style>
 </head>
 
@@ -76,26 +96,54 @@
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <label for="id_title">Nombre Completo:</label><br>
-                        {{ form.title }}<br>
-                        <label for="id_email">Correo Electrónico:</label><br>
-                        {{ form.email }}<br>
-                        <label for="id_description">Descripción:</label><br>
-                        {{ form.description }}<br>
-                        <label for="id_image">Imagen:</label><br>
-                        {{ form.image }}<br>
-                        <label for="id_url">LinkenIn:</label><br>
-                        {{ form.url }}<br>
-                        <label for="id_genre">Género:</label><br>
-                        {{ form.genre }}<br>
-                        <label for="id_year">Fecha de nacimiento (YYYY-MM-DD):</label><br>
-                        {{ form.year }}<br>
-                        <label for="id_carreers">Carreras:</label><br>
-                        {{ form.carreers }}<br>
-                        <label for="id_education">Formación Académica:</label><br>
-                        {{ form.education }}<br>
-                        <br>
-                        <button type="submit" class="button">Actualizar Registro</button>
+                        <div class="form-group">
+                            <label for="id_title">Nombre Completo:</label>
+                            {{ form.title }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_email">Correo Electrónico:</label>
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_description">Descripción:</label>
+                            {{ form.description }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_image">Imagen:</label>
+                            {{ form.image }}
+                        </div>
+
+                        <div class="form-group">                            
+                            <label for="id_url">LinkenIn:</label>
+                            {{ form.url }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_genre">Género:</label>
+                            {{ form.genre }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_year">Fecha de nacimiento (YYYY-MM-DD):</label>
+                            {{ form.year }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_carreers">Materias (Ctrl + click):</label>
+                            {{ form.carreers }}
+                        </div>
+
+                        <div class="form-group">                            
+                            <label for="id_education">Formación Académica:</label>
+                            {{ form.education }}
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Actualizar Registro</button>
+                        </div>
                     </form>
                 </div>
             </div>

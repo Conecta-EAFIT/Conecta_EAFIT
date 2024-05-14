@@ -3,66 +3,76 @@
 <head>
     <!-- Agrega tus enlaces a Bootstrap y otros archivos de estilo aquí -->
     <style>
-        form {
-            margin: auto;
-            max-width: 500px;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-        }
-
-        input[type="text"] {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
+        .form-group input[type="text"] {
             width: 100%;
-            box-sizing: border-box;
-        }
-
-        input[type="number"] {
-            display: block;
-            width: 50%;
             padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
         }
-
-        .button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: blue;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
+        .form-group input[type="email"] {
             width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .form-group input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .form-group #id_image {
+            display: inline-block;
+            padding: 10px 20px;
             cursor: pointer;
-            transition: 0.3s;
+            background-color: #1845ad;
+            color: white;
+            border: 1px solid #1845ad;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        .button:hover {
-            background-color: lightblue;
-        }
-
-        select {
+        .form-group select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin: 8px 0;
             box-sizing: border-box;
-            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             font-size: 16px;
+            background-color: #f8f8f8;
             color: #333;
-          }
-
-          select option {
-            background-color: #fff;
-            color: #333;
+            appearance: none;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             font-size: 16px;
-          }
-
+            background-color: #f8f8f8;
+            color: #333;
+            resize: vertical;
+            min-height: 100px;
+        }
     </style>
 </head>
 
@@ -71,13 +81,31 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="text-center">Editar Noticia</h2>
+                    <h1 class="text-center">Editar Noticia</h1>
                 </div>
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <br>
+                        <div class="form-group">
+                            <label for="id_title">Nombre de la Noticia:</label>
+                            {{ form.headline }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_description">Cuerpo:</label>
+                            {{ form.body }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_image">Fecha de publicación (YYYY-MM-DD):</label>
+                            {{ form.date }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_image">Nombre de profesores involucrados:</label>
+                            {{ form.author }}
+                        </div>
+
                         <button type="submit" class="button">Actualizar Registro</button>
                     </form>
                 </div>
