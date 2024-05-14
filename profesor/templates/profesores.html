@@ -58,16 +58,20 @@
             </div>
             <button type="submit" class="btn btn-primary space-bottom" style="background-color: #1845ad;">Buscar Profesor</button>
         </form>
+        {% if searchTerm is not none %}
         <p>Buscando por: {{ searchTerm }}</p>
-
+    {% endif %}
+    
         <form action="">
             <div class="mb-3">
-                <label for="searchProfesor1" class="form-label space-top">Busca Por la carrera del Profesor:</label>
+                <label for="searchProfesor1" class="form-label space-top">Busca Por la Materia:</label>
                 <input type="text" class="form-control" name="searchProfesor1" id="searchProfesor1" />
             </div>
             <button type="submit" class="btn btn-primary space-bottom" style="background-color: #1845ad;">Buscar por carrera</button>
         </form>
+        {% if searchTerm1 is not none %}
         <p>Buscando por: {{ searchTerm1 }}</p>
+        {% endif %}
         <div class="row row-cols-1 row-cols-md-3 g-2">
             {% for profesor in profesores %}
             <div class="col d-flex align-items-stretch">

@@ -76,7 +76,7 @@
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <label for="id_title">Título:</label><br>
+                        <label for="id_title">Nombre Completo:</label><br>
                         {{ form.title }}<br>
                         <label for="id_email">Correo Electrónico:</label><br>
                         {{ form.email }}<br>
