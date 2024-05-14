@@ -47,7 +47,7 @@ def delete_record(request, pk):
 	if request.user.is_authenticated:
 		delete_it = Profesor.objects.get(id=pk)
 		delete_it.delete()
-		messages.success(request, "Record Deleted Successfully...")
+		messages.success(request, "Profesor elimnado Correctamente...")
 		return redirect('profesores')
 	else:
 		messages.success(request, "You Must Be Logged In To Do That...")
@@ -79,8 +79,9 @@ def update_record(request, pk):
     if request.method == 'POST':
         form = AddRecordForm(request.POST, request.FILES, instance=current_record)
         if form.is_valid():
-            form.save() 
-            messages.success(request, "Record Has Been Updated!")
+            form.save()
+            print("Se actualizó el profesor...........") 
+            messages.success(request, "El Profesor se ha actualizado correctamente!")
             return redirect('conectaHome')
     else:
         form = AddRecordForm(instance=current_record)

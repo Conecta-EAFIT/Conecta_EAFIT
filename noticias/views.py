@@ -15,7 +15,8 @@ def add_noticias(request):
             form = AddNoticiaForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                messages.success(request, "Record Added...")
+                print("Noticia agregada...") 
+                messages.success(request, "Profesor agregado...")
                 return redirect('conectaHome')
         else:
             form = AddNoticiaForm()
@@ -49,6 +50,7 @@ def update_noticias(request, pk):
         form = AddNoticiaForm(request.POST, request.FILES, instance=current_record)
         if form.is_valid():
             form.save() 
+            print("Noticia actualizada...") 
             messages.success(request, "Record Has Been Updated!")
             return redirect('conectaHome')
     else:

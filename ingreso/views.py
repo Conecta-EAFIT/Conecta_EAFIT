@@ -24,6 +24,7 @@ def signup(request):
         myuser.save()
 
         messages.success(request, "Tu cuenta se ha creado correctamente. ")
+        print("El usuario se ha registrado")
         return redirect('login')
 
     return render(request, "signup.html")
@@ -44,7 +45,7 @@ def login(request):
         #     return redirect('home1')
         if user is not None:
             auth_login(request, user)
-            print("El usuario es estudiante")
+            print("El usuario se ha logueado")
             estudiante, creado = Estudiante.objects.get_or_create(usuario=user, defaults={'nombre': user.username, 'email': user.email})
             return redirect('conectaHome')
         else:
@@ -55,6 +56,7 @@ def login(request):
 def signout(request):
     logout(request)
     messages.success(request, "Sesión cerrada correctamente")
+    print("Se cerró la sesión")
     return redirect('home1')
 
 
