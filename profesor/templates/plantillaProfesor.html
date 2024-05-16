@@ -114,11 +114,51 @@
             margin: 0 2em;
             display: block;
         }
+        .btn-main {
+            border: 1px solid #000;
+            background-color: #1845ad;
+            border-radius: 6%;
+            color: #fff;
+            cursor: pointer;
+            font-size: 12px;
+            width: 12em;
+            height: 4em;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            display: inline-block;
+        }
+        .space-l {
+            margin-left: 40px;
+        }
+        .comentario {
+            border: 2px solid black;
+            background-color: #fff;
+            border-radius: 1em;
+            text-align: left;
+            color: #1845ad;
+            padding: 1em;
+            width: 100%;
+            width: 700px;
+            margin-bottom: 10px;
+        }
+        .comentarios-container {
+            float: left; /* Corrección: se debe usar 'left' en lugar de 'el' */
+            width: 65%;
+            margin-right: 2em;
+        }
+
+        .ccomentarios-container {
+            float: left; /* Cambiado a 'left' para que ambos divs floten en la misma dirección */
+            width: 33%; /* Ajusta el ancho según sea necesario */
+        }
+
+        .ta-r{
+            text-align: right;
+        }
 
     </style>
 </head>
 <body>
-
     <div class="contenedor">
         <img src="{{ profesor.image.url }}"  class="imagen_perfil" alt="{{ profesor.title }}">
 
@@ -127,7 +167,7 @@
                 <i class="fa-solid fa-user fa-lg"></i>
                 <p class="profesor-item">{{ profesor.title }}</p>
             </div>
-            
+
             <div>
                 <i class="fa-solid fa-envelope fa-lg"></i>
                 <p class="profesor-item"> {{ profesor.email }} </p>
@@ -145,9 +185,9 @@
             <p><strong>Descripción:</strong> {{ profesor.description }}</p>
             <p><strong>Formación Academica:</strong> {{ profesor.education }}</p>
         </aside>
-        
+
     </div>
-    
+
     <div class="contenedor-profesor">
         <p class="title-cont-carreras">Asignaturas: </p>
         {% for career in profesor.carreers.all %}
@@ -168,13 +208,13 @@
             {% endif %}
         </p>
     </div>
-        
+
     <div>
         <div class="profesor-rating">
             <p class="space-bottom">
                 Calificación del profesor: {{ Voto.promedio_votos }}
             </p>
-            
+
             <form method="post" class="form-calificion">
                 {% csrf_token %}
                 {% if not voto_usuario %}
@@ -200,22 +240,25 @@
             {% endif %}
         </div>
     </div>
-    <div>
-        <form method="post">
+    <div class="ccomentarios-container">
+
+        <form class="space-l" method="post">
             {% csrf_token %}
             <textarea name="texto" rows="4" cols="50"></textarea><br>
-            <button type="submit">Comentar</button>
+            <button class="btn-main" type="submit">Comentar</button>
         </form>
-        <h2>Comentarios:</h2>
-            <ul>
-                {% for comentario in comentarios %}
-                    <li>
-                        <strong>{{ comentario.usuario.username }}</strong> - {{ comentario.texto }} ({{ comentario.fecha }})
-                    </li>
-                {% empty %}
-                    <li>No hay comentarios aún.</li>
-                {% endfor %}
-            </ul>
+    </div>
+    <div class="comentarios-container">
+        <h2 class="space-l">Comentarios:</h2>
+        <ul class="space-l">
+            {% for comentario in comentarios %}
+                <li class="comentario">
+                    <strong>{{ comentario.usuario.username }}:</strong> <br> {{ comentario.texto }} <br> <div class="ta-r">({{ comentario.fecha }})</div>
+                </li>
+            {% empty %}
+                <li>No hay comentarios aún.</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 {% endblock content %}
